@@ -19,11 +19,11 @@ public class Arboles {
        
         arbol A1= new arbol();
         char Vc[]=JOptionPane.showInputDialog("Ingrese la cadena del arbol").toCharArray();
-        A1.insertar(Vc);
+        A1.crear(Vc);
         //menu
     }  
         
      
     }
     
-}
+

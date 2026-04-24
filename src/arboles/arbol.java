@@ -20,14 +20,24 @@ public class arbol {
         raiz=null;
     }
     
-    public void insertar (char Vc[]){
+    public void crear (char Vc[]){
+        raiz= new Nodo(Vc[0]);
+        Nodo p=raiz;
         
-        for (int i = 0; i < Vc.length; i++) {
-            if (raiz==null) {
+        for (int i = 1; i < Vc.length; i++) {
+           
                 Nodo nuevo=new Nodo(Vc[i]);
+                if (nuevo.getDato()>p.getDato()) {
+                    p.setLD(nuevo);
                 
-            if
+            }else{
+                    if(nuevo.getDato()<p.getDato()){
+                        p.setLI(nuevo);
+                    }else{
+                        
+                    }
                 
+          
                 
                 
                 
