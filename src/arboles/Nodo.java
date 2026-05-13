@@ -7,7 +7,7 @@ package arboles;
 
 /**
  *
- * @author sala313
+ * @author  Mariana Castro y Miguel Angel Mejia
  */
 public class Nodo {
     private Nodo LI, LD;
