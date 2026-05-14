@@ -95,10 +95,22 @@ public class VentanaArbol extends javax.swing.JFrame {
             JOptionPane.showInputDialog(
 
                 "====== MENU AVL ======\n\n" +
-                "1. Insertar cadena\n" +
-                "2. Mostrar arbol\n" +
-                "3. Mostrar factores\n" +
-                "4. Salir"
+                
+                "1. Mostrar arbol\n" +
+                "2. Mostrar Preorden\n" +
+                "3. Mostrar Inorden\n" +
+                "4. Mostrar Posorden\n" +
+                "5. Contar las hojas\n"+
+                "6. Contar los Padres\n"+
+                "7. Insertar Dato\n" +
+                "8. Eliminar Dato\n" +
+                "9. Mostrar el hermano\n" +
+                "10. Mostrar el nivel de un dato\n" +
+                "11. Mostrar la altura de un dato\n"+                      
+                "12. Mostrar los primos Hermanos de un dato\n"+
+                "13. Mostrar los ancestros de un dato\n"+
+                "0. Salir\n"
+                        
             )
         );
 
@@ -107,23 +119,78 @@ public class VentanaArbol extends javax.swing.JFrame {
             case 1:
                 
 
-           
+            java.awt.EventQueue.invokeLater(() -> new VentanaArbol(A1).setVisible(true));
+
 
             break;
 
             case 2:
 
-                java.awt.EventQueue.invokeLater(() -> new VentanaArbol(A1).setVisible(true));
-
+              
+                
             break;
 
             case 3:
 
-                A1.FactorB(A1.getRaiz());
+                
+
+            break;
+            case 4:
+
+               
+
+            break;
+            case 5:
+
+               
+
+            break;
+            case 6:
+
+              
+
+            break;
+            case 7:
+
+                
+
+            break;
+            case 8:
+
+             
+            break;
+            case 9:
+
+               
+
+            break;
+            case 10:
+
+               
+
+            break;
+            case 11:
+                char dato=JOptionPane.showInputDialog("Digite la letra q desea Buscar").charAt(0);;
+                int Altura=A1.altura(A1.buscarNodo(A1.getRaiz(), dato));
+                JOptionPane.showMessageDialog(null,"La altura de " + dato + " es -> "+ Altura);
+
+                
+
+            break;
+            case 12:
+
+                
 
             break;
 
-            case 4:
+            case 13:
+
+                
+
+            break;
+
+
+            case 0:
 
                 JOptionPane.showMessageDialog(
                     null,
@@ -140,7 +207,7 @@ public class VentanaArbol extends javax.swing.JFrame {
                 );
         
         }
-        } while(opcion!=4);}}
+        } while(opcion!=0);}}
         
 
           
