@@ -85,7 +85,26 @@ public class Arbol {
 }
         
     
+public int contarHojas(Nodo raiz){
 
+    if(raiz == null){
+
+        return 0;
+    }
+
+  
+    if(
+        raiz.getLI() == null
+        &&
+        raiz.getLD() == null
+    ){
+
+        return 1;
+    }
+
+    return
+        contarHojas(raiz.getLI())+contarHojas(raiz.getLD());
+}
     public void Construir(char[] vc){
 
         for(char c : vc){
@@ -96,6 +115,67 @@ public class Arbol {
             }
         }
     }
+    public String posOrden(Nodo raiz){
+
+    if(raiz == null){
+
+        return "";
+    }
+
+    return
+        posOrden(raiz.getLI())
+        +
+        posOrden(raiz.getLD())
+        +
+        raiz.getDato() + "-> ";
+}
+    public String preOrden(Nodo raiz){
+
+    if(raiz == null){
+
+        return "";
+    }
+
+    return
+        raiz.getDato() + "-> "
+        +
+        preOrden(raiz.getLI())
+        +
+        preOrden(raiz.getLD());
+}
+    public String InOrden(Nodo raiz){
+
+    if(raiz == null){
+
+        return "";
+    }
+
+    return
+        
+        
+            InOrden(raiz.getLI())
+        +
+        raiz.getDato() + "-> "
+        +
+        InOrden(raiz.getLD());
+}
+    public int contarPadres(Nodo raiz){
+
+    if(raiz == null){
+
+        return 0;
+    }
+    if(
+        raiz.getLI() != null
+        ||
+        raiz.getLD() != null
+    ){
+
+        return 1 + contarPadres(raiz.getLI() ) + contarPadres(raiz.getLD());
+        }
+
+    return 0;
+}
     public Nodo buscarNodo(Nodo raiz, char dato){
 
     if(raiz == null){
