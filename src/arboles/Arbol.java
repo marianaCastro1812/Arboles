@@ -96,6 +96,34 @@ public class Arbol {
             }
         }
     }
+    public Nodo buscarNodo(Nodo raiz, char dato){
+
+    if(raiz == null){
+
+        return null;
+    }
+
+    if(dato == raiz.getDato()){
+
+        return raiz;
+    }
+
+    if(dato < raiz.getDato()){
+
+        return buscarNodo(
+            raiz.getLI(),
+            dato
+        );
+    }
+
+    else{
+
+        return buscarNodo(
+            raiz.getLD(),
+            dato
+        );
+    }
+}
 
     public Nodo insertarRecursivo(Nodo raiz, char dato){
 
@@ -141,7 +169,8 @@ public class Arbol {
         return RDD(raiz);
     }
 }
-//Falta todo
+   
+//FaltA
 if(factor < -1){
 
     System.out.println(
