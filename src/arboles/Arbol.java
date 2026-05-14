@@ -124,6 +124,113 @@ public class Arbol {
         );
     }
 }
+    public Nodo eliminar(Nodo raiz, char dato){
+
+    if(raiz == null){
+        System.out.println("la letra no existe");
+        return null;
+    }
+
+
+
+    if(dato < raiz.getDato()){
+
+        raiz.setLI(
+
+            eliminar(
+                raiz.getLI(),
+                dato
+            )
+        );
+    }
+
+    else if(dato > raiz.getDato()){
+
+        raiz.setLD(
+
+            eliminar(
+                raiz.getLD(),
+                dato
+            )
+        );
+    }
+
+    else{
+
+
+        if(
+            raiz.getLI() == null
+            &&
+            raiz.getLD() == null
+        ){
+
+            return null;
+        }
+        if(raiz.getLI() == null){
+
+            return raiz.getLD();
+        }
+
+        if(raiz.getLD() == null){
+
+            return raiz.getLI();
+        }
+
+        Nodo reemplazo =
+            menorDerecha(
+                raiz.getLD()
+            );
+
+        raiz.setDato(
+            reemplazo.getDato()
+        );
+
+        raiz.setLD(
+
+            eliminar(
+                raiz.getLD(),
+                reemplazo.getDato()
+            )
+        );
+    }
+    int factor = FactorB(raiz);
+
+   if(factor > 1){
+
+    System.out.println(
+        "Desbalance izquierda en "
+        + raiz.getDato()
+    );if(FactorB(raiz.getLI()) >= 0){
+    return RD(raiz);}else{
+        return RDD(raiz);
+    }
+}
+   
+
+if(factor < -1){
+
+    System.out.println(
+        "Desbalance derecha en "
+        + raiz.getDato()
+    ); if(FactorB(raiz.getLD()) <= 0){
+    return RI(raiz);
+    }else{
+        return RDI(raiz);
+}}
+    
+    
+
+    return raiz;
+}
+    public Nodo menorDerecha(Nodo nodo){
+
+    while(nodo.getLI() != null){
+
+        nodo = nodo.getLI();
+    }
+
+    return nodo;
+}
 
     public Nodo insertarRecursivo(Nodo raiz, char dato){
 
@@ -169,8 +276,7 @@ public class Arbol {
         return RDD(raiz);
     }
 }
-   
-//FaltA
+  
 if(factor < -1){
 
     System.out.println(
