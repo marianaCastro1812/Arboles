@@ -12,11 +12,21 @@ package arboles;
 public class Nodo {
     private Nodo LI, LD;
     private char Dato;
+    private int altura;
 
     public Nodo (char Dato) {
         this.LI = null;
         this.LD = null;
         this.Dato = Dato;
+        
+    }
+
+    public int getAltura() {
+        return altura;
+    }
+
+    public void setAltura(int altura) {
+        this.altura = altura;
     }
 
     public Nodo getLI() {

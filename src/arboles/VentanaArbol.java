@@ -60,13 +60,14 @@ public class VentanaArbol extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         Arbol A1 = new Arbol();
+        int opcion;
 
         char Vc[] = JOptionPane
                 .showInputDialog("Ingrese la cadena del arbol")
                 .toCharArray();
-
+        
         A1.Construir(Vc);
-
+       
        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -86,9 +87,64 @@ public class VentanaArbol extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new VentanaArbol(A1).setVisible(true));
-    }
+//        java.awt.EventQueue.invokeLater(() -> new VentanaArbol(A1).setVisible(true));
+        do{
+
+        opcion = Integer.parseInt(
+
+            JOptionPane.showInputDialog(
+
+                "====== MENU AVL ======\n\n" +
+                "1. Insertar cadena\n" +
+                "2. Mostrar arbol\n" +
+                "3. Mostrar factores\n" +
+                "4. Salir"
+            )
+        );
+
+        switch(opcion){
+
+            case 1:
+                
+
+           
+
+            break;
+
+            case 2:
+
+                java.awt.EventQueue.invokeLater(() -> new VentanaArbol(A1).setVisible(true));
+
+            break;
+
+            case 3:
+
+                A1.FactorB(A1.getRaiz());
+
+            break;
+
+            case 4:
+
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Programa finalizado"
+                );
+
+            break;
+
+            default:
+
+                JOptionPane.showMessageDialog(
+                    null,
+                    "Opcion invalida"
+                );
+        
+        }
+        } while(opcion!=4);}}
+        
+
+          
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-}
+
