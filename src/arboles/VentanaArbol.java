@@ -1,5 +1,7 @@
 
 package arboles;
+import java.awt.Font;
+import javax.swing.JTextArea;
 import javax.swing.JOptionPane;
 
 /**
@@ -88,26 +90,37 @@ public class VentanaArbol extends javax.swing.JFrame {
 //        java.awt.EventQueue.invokeLater(() -> new VentanaArbol(A1).setVisible(true));
         do{
 
-        opcion = Integer.parseInt(
+        
 
-            JOptionPane.showInputDialog(
-                        "====== MENU AVL ======\n\n"
-                        + "1. Mostrar arbol\n"
-                        + "2. Mostrar Preorden\n"
-                        + "3. Mostrar Inorden\n"
-                        + "4. Mostrar Posorden\n"
-                        + "5. Contar las hojas\n"
-                        + "6. Contar los Padres\n"
-                        + "7. Insertar Dato\n"
-                        + "8. Eliminar Dato\n"
-                        + "9. Mostrar el hermano\n"
-                        + "10. Mostrar el nivel de un dato\n"
-                        + "11. Mostrar la altura de un dato\n"
-                        + "12. Mostrar los primos Hermanos de un dato\n"
-                        + "13. Mostrar los ancestros de un dato\n"
-                        + "0. Salir\n"
-                )
-            );
+     JTextArea menu = new JTextArea();
+
+menu.setText(
+        "===== MENU AVL =====\n\n"
+      + "1. Mostrar arbol\n"
+      + "2. Mostrar Preorden\n"
+      + "3. Mostrar Inorden\n"
+      + "4. Mostrar Posorden\n"
+      + "5. Contar las hojas\n"
+      + "6. Contar los Padres\n"
+      + "7. Insertar Dato\n"
+      + "8. Eliminar Dato\n"
+      + "9. Mostrar el hermano\n"
+      + "10. Mostrar el nivel de un dato\n"
+      + "11. Mostrar la altura de un dato\n"
+      + "12. Mostrar los primos hermanos\n"
+      + "13. Mostrar los ancestros\n"
+      + "14. Contar descendientes\n"
+      + "15. Mostrar descendientes\n\n"
+      + "0. Salir"
+);
+
+        menu.setEditable(false);
+
+        menu.setFont(new Font("calibri", Font.PLAIN, 16));
+
+        opcion = Integer.parseInt(
+        JOptionPane.showInputDialog(null, menu)
+);
 
             switch (opcion) {
 
@@ -160,12 +173,14 @@ public class VentanaArbol extends javax.swing.JFrame {
                 char nuevo2=JOptionPane.showInputDialog("Digite la letra que desea Eliminar").charAt(0);;
                 if (Character.isLetter(nuevo2)) {
                     A1.eliminar(A1.getRaiz(), nuevo2);
+                      
                 } else {
                     JOptionPane.showMessageDialog(null, "Digite una letra");
                     return;
                 }
+                JOptionPane.showMessageDialog(null, "Presione 1 para mostrar el Arbol");
 
-                JOptionPane.showMessageDialog(null, "Su letra fue eliminada, presione 1 para mostrar");
+                
 
 
              
@@ -304,6 +319,30 @@ public class VentanaArbol extends javax.swing.JFrame {
                         );
                     }
 
+                    break;
+                case 14:
+                    char dato3=JOptionPane.showInputDialog("Digite la letra que desea").charAt(0);;
+                if (Character.isLetter(dato3)) {
+
+                    int total=A1.contardescendientes(A1.buscarNodo(A1.getRaiz(), dato3));
+                    JOptionPane.showMessageDialog(null, "Hay " + total + " descendientes "  );
+                } else {
+                    JOptionPane.showMessageDialog(null, "Digite una letra");
+                    return;
+                }
+ 
+                    break;
+                    case 15:
+                        char dato4=JOptionPane.showInputDialog("Digite la letra que desea").charAt(0);;
+                if (Character.isLetter(dato4)) {
+
+                    String salida=A1.Mostrardescendientes(A1.buscarNodo(A1.getRaiz(), dato4));
+                    JOptionPane.showMessageDialog(null, salida  );
+                } else {
+                    JOptionPane.showMessageDialog(null, "Digite una letra");
+                    return;
+                }
+ 
                     break;
 
 
