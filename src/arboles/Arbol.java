@@ -84,7 +84,59 @@ public class Arbol {
 
     return P;
 }
-        
+//    public void contaryMostrar(Nodo raiz, char dato){
+//        contardescendientes(this.buscarNodo(raiz, dato));
+//        Mostrardescendientes(this.buscarNodo(raiz, dato));
+//        
+//    }
+      public int contardescendientes(Nodo raiz){
+
+    if(raiz == null){
+
+        return 0;
+    }
+    int cont=0;
+    if (raiz.getLI() != null) {
+        cont+=1;
+    }
+
+    if (raiz.getLD() != null) {
+        cont+=1;
+    }
+    cont+=contardescendientes(raiz.getLI());
+    cont+=contardescendientes(raiz.getLD());
+
+
+//JOptionPane.showMessageDialog(null, "Hay " + cont + " descendientes "  );
+  
+
+    return
+        cont;
+}  
+     public String Mostrardescendientes(Nodo raiz){
+
+    if(raiz == null){
+
+        return "";
+    }
+    String salida="";
+    if (raiz.getLI() != null) {
+        salida += raiz.getLI().getDato() + " ";
+    }
+
+    if (raiz.getLD() != null) {
+        salida += raiz.getLD().getDato() + " ";
+    }
+    salida+=Mostrardescendientes(raiz.getLI());
+    salida+=Mostrardescendientes(raiz.getLD());
+
+
+
+    //JOptionPane.showMessageDialog(null, salida  );
+
+    return
+        salida;
+}  
     
 public int contarHojas(Nodo raiz){
 
@@ -205,10 +257,15 @@ public int contarHojas(Nodo raiz){
         );
     }
 }
+    public Nodo descendientes(Nodo raiz,char dato){
+        Nodo buscado= buscarNodo(raiz, dato);
+        
+        return raiz;
+    }
     public Nodo eliminar(Nodo raiz, char dato){
 
     if(raiz == null){
-        System.out.println("la letra no existe");
+        JOptionPane.showMessageDialog(null, "Su letra no existe en el Arbol");
         return null;
     }
 
@@ -275,6 +332,8 @@ public int contarHojas(Nodo raiz){
         );
     }
     int factor = FactorB(raiz);
+    
+    
 
    if(factor > 1){
 
@@ -298,6 +357,7 @@ if(factor < -1){
     }else{
         return RDI(raiz);
 }}
+
     
     
 
@@ -595,5 +655,5 @@ if(factor < -1){
 
     return "";
 }
-    //
+    //holamundo
 }
