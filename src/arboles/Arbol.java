@@ -46,6 +46,7 @@ public class Arbol {
 }
     private Nodo RDI(Nodo raiz){
       
+//E
 
     raiz.setLD(
 
@@ -342,7 +343,7 @@ if(factor < -1){
                 )
             );
         }else{
-            JOptionPane.showMessageDialog(null, "La letra " +dato+"ya fue ingresada");
+            JOptionPane.showMessageDialog(null, "La letra " +dato+" ya fue ingresada");
         }
         int factor = FactorB(raiz);
 
@@ -371,4 +372,228 @@ if(factor < -1){
 
         return raiz;
     }
+    
+    public Nodo mostrarHermano(Nodo raiz, char dato){
+
+    if(raiz == null){
+        return null;
+    }
+
+
+    if(
+        raiz.getLI() != null &&
+        raiz.getLI().getDato() == dato
+    ){
+
+        return raiz.getLD();
+    }
+
+    if(
+        raiz.getLD() != null &&
+        raiz.getLD().getDato() == dato
+    ){
+
+        return raiz.getLI();
+    }
+
+    Nodo izquierda =
+        mostrarHermano(
+            raiz.getLI(),
+            dato
+        );
+
+    if(izquierda != null){
+        return izquierda;
+    }
+
+    return mostrarHermano(
+        raiz.getLD(),
+        dato
+    );
+}
+    
+    public int mostrarNivel(Nodo raiz, char dato, int nivel){
+
+    if(raiz == null){
+
+        return -1;
+    }
+
+    if(raiz.getDato() == dato){
+
+        return nivel;
+    }
+
+    int izquierda =
+        mostrarNivel(
+            raiz.getLI(),
+            dato,
+            nivel + 1
+        );
+
+    if(izquierda != -1){
+
+        return izquierda;
+    }
+
+    return mostrarNivel(
+        raiz.getLD(),
+        dato,
+        nivel + 1
+    );
+}
+    
+    public Nodo buscarPadre(Nodo raiz, char dato){
+
+    if(raiz == null){
+
+        return null;
+    }
+
+    if(
+        (raiz.getLI() != null &&
+        raiz.getLI().getDato() == dato)
+
+        ||
+
+        (raiz.getLD() != null &&
+        raiz.getLD().getDato() == dato)
+    ){
+
+        return raiz;
+    }
+
+    Nodo izquierda =
+        buscarPadre(
+            raiz.getLI(),
+            dato
+        );
+
+    if(izquierda != null){
+
+        return izquierda;
+    }
+
+    return buscarPadre(
+        raiz.getLD(),
+        dato
+    );
+}
+    
+    public String mostrarPrimosHermanos(Nodo raiz, char dato){
+
+    Nodo padre =
+        buscarPadre(
+            raiz,
+            dato
+        );
+
+    if(padre == null){
+
+        return "No tiene primos hermanos";
+    }
+
+    Nodo abuelo =
+        buscarPadre(
+            raiz,
+            padre.getDato()
+        );
+
+    if(abuelo == null){
+
+        return "No tiene primos hermanos";
+    }
+
+    Nodo tio = null;
+
+    // Buscar el tio
+    if(
+        abuelo.getLI() != null &&
+        abuelo.getLI().getDato() == padre.getDato()
+    ){
+
+        tio = abuelo.getLD();
+    }
+
+    else{
+
+        tio = abuelo.getLI();
+    }
+
+    if(tio == null){
+
+        return "No tiene primos hermanos";
+    }
+
+    String primos = "";
+
+    if(tio.getLI() != null){
+
+        primos +=
+            tio.getLI().getDato()
+            + " ";
+    }
+
+    if(tio.getLD() != null){
+
+        primos +=
+            tio.getLD().getDato()
+            + " ";
+    }
+
+    if(primos.equals("")){
+
+        return "No tiene primos hermanos";
+    }
+
+    return primos;
+}
+    public String mostrarAncestros(Nodo raiz, char dato){
+
+    if(raiz == null){
+
+        return "";
+    }
+
+    // Si el dato está en un hijo directo
+    if(
+        (raiz.getLI() != null &&
+        raiz.getLI().getDato() == dato)
+
+        ||
+
+        (raiz.getLD() != null &&
+        raiz.getLD().getDato() == dato)
+    ){
+
+        return raiz.getDato() + " ";
+    }
+
+    // Buscar por izquierda
+    String izquierda =
+        mostrarAncestros(
+            raiz.getLI(),
+            dato
+        );
+
+    if(!izquierda.equals("")){
+
+        return raiz.getDato() + " " + izquierda;
+    }
+
+    // Buscar por derecha
+    String derecha =
+        mostrarAncestros(
+            raiz.getLD(),
+            dato
+        );
+
+    if(!derecha.equals("")){
+
+        return raiz.getDato() + " " + derecha;
+    }
+
+    return "";
+}
+    //
 }
