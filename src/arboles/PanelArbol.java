@@ -23,7 +23,7 @@ public class PanelArbol extends JPanel {
 
         super.paintComponent(g);
 
-        dibujar(g, arbol.getRaiz(), 400, 50, 200);
+        dibujar(g, arbol.getRaiz(), 700, 50, 350);
     }
 
     public void dibujar(Graphics g,

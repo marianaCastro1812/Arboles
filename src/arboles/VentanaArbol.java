@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package arboles;
 import javax.swing.JOptionPane;
 
@@ -25,7 +22,7 @@ public class VentanaArbol extends javax.swing.JFrame {
 
         this.setContentPane(panel);
 
-        this.setSize(800,600);
+        this.setSize(1600,900);
 
         this.setLocationRelativeTo(null);
     }
@@ -68,6 +65,7 @@ public class VentanaArbol extends javax.swing.JFrame {
         
         A1.Construir(Vc);
        
+        
        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -142,7 +140,7 @@ public class VentanaArbol extends javax.swing.JFrame {
             break;
             case 6:
                 int padres=A1.contarPadres(A1.getRaiz());
-                JOptionPane.showMessageDialog(null, "Hay " + padres + " hojas en este arbol ");
+                JOptionPane.showMessageDialog(null, "Hay " + padres + " padres en este arbol ");
 
 
               
@@ -172,18 +170,74 @@ public class VentanaArbol extends javax.swing.JFrame {
 
              
             break;
-            case 9:
+            
+                case 9:
 
-               
+                    char hermano
+                            = JOptionPane.showInputDialog(
+                                    "Digite la letra al que le desea buscar su hermano"
+                            ).charAt(0);
 
-            break;
+                    Nodo h
+                            = A1.mostrarHermano(
+                                    A1.getRaiz(),
+                                    hermano
+                            );
+
+                    if (h != null) {
+
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "El hermano de "
+                                + hermano
+                                + " es -> "
+                                + h.getDato()
+                        );
+                    } else {
+
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "No tiene hermano o no existe"
+                        );
+                    }
+
+                    break;
+
             case 10:
 
-               
+                char nivelDato
+                        = JOptionPane.showInputDialog(
+                                "Digite la letra"
+                        ).charAt(0);
+
+                int nivel
+                        = A1.mostrarNivel(
+                                A1.getRaiz(),
+                                nivelDato,
+                                0
+                        );
+
+                if (nivel != -1) {
+
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "El nivel de "
+                            + nivelDato
+                            + " es -> "
+                            + nivel
+                    );
+                } else {
+
+                    JOptionPane.showMessageDialog(
+                            null,
+                            "El dato no existe"
+                    );
+                }
 
             break;
+            
             case 11:
-                char dato=JOptionPane.showInputDialog("Digite la letra q desea Buscar").charAt(0);;
+                char dato=JOptionPane.showInputDialog("Digite la letra que desea Buscar").charAt(0);;
                 if (Character.isLetter(dato)) {
 
                     int Altura = A1.altura(A1.buscarNodo(A1.getRaiz(), dato));
@@ -192,23 +246,65 @@ public class VentanaArbol extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Digite una letra");
                     return;
                 }
-                
-                
-
-                
-
+ 
             break;
+            
             case 12:
 
-                
+                char primo
+                        = JOptionPane.showInputDialog(
+                                "Digite el dato"
+                        ).charAt(0);
+
+                String primos
+                        = A1.mostrarPrimosHermanos(
+                                A1.getRaiz(),
+                                primo
+                        );
+
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Primos hermanos de "
+                        + primo
+                        + " -> "
+                        + primos
+                );
+
 
             break;
 
-            case 13:
+                case 13:
 
-                
+                    char ancestro
+                            = JOptionPane.showInputDialog(
+                                    "Digite el dato"
+                            ).charAt(0);
 
-            break;
+                    String ancestros
+                            = A1.mostrarAncestros(
+                                    A1.getRaiz(),
+                                    ancestro
+                            );
+
+                    if (!ancestros.equals("")) {
+
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "Ancestros de "
+                                + ancestro
+                                + "\n\n"
+                                + ancestros
+                                + "\n\nEl ultimo ancestro mostrado es el padre"
+                        );
+                    } else {
+
+                        JOptionPane.showMessageDialog(
+                                null,
+                                "No tiene ancestros o no existe"
+                        );
+                    }
+
+                    break;
 
 
             case 0:
